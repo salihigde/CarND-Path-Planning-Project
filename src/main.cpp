@@ -252,6 +252,7 @@ int main() {
 			bool tooCloseLeft = false;
 			bool tooCloseRight = false;
 
+			//find nearby cars to help making decision
 			for(int i = 0; i<sensor_fusion.size(); i++){
 				double vx = sensor_fusion[i][3];
 				double vy = sensor_fusion[i][4];
@@ -274,6 +275,8 @@ int main() {
 				}
 			}
 
+
+			//Make the decision on what to do
 			if(tooCloseLane && !tooCloseLeft && lane > 0){
 				lane = lane - 1;
 			}
@@ -288,8 +291,6 @@ int main() {
 			}
 
           	json msgJson;
-
-          	// TODO: define a path made up of (x,y) points that the car will visit sequentially every .02 seconds
 
 			vector<double> ptsx;
 			vector<double> ptsy;
